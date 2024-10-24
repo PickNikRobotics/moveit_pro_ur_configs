@@ -1,1 +1,1 @@
-# moveit_pro_ur_configs
+# MoveIt Pro family of UR configuration packages
