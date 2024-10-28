@@ -17,7 +17,6 @@ install(DIRECTORY "${PICKNIK_ACCESSORIES_SHARE_DIR}"
         FILES_MATCHING PATTERN "*")
 
 # Install individual XML files
-# 
 # set(EXTERNAL_XML_FILES
 #   "${PICKNIK_ACCESSORIES_SHARE_DIR}/ur5e/ur5e_globals.xml"
 #   "${PICKNIK_ACCESSORIES_SHARE_DIR}/ur5e/ur5e.xml"
