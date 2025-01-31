@@ -12,7 +12,6 @@
         waypoint_name="Hinge View"
         joint_group_name="manipulator"
         controller_names="/joint_trajectory_controller /robotiq_gripper_controller"
-        planner_interface="moveit_default"
       />
       <SubTree ID="Clear Snapshot" _collapsed="true" />
       <SubTree ID="Reset Planning Scene" _collapsed="true" />
@@ -55,7 +54,7 @@
         camera_info="{camera_info}"
         masks3d="{masks3d}"
       />
-      <Decorator ID="ForEachMask3D" vector_in="{masks3d}" out="{mask3d}">
+      <Decorator ID="ForEach" vector_in="{masks3d}" out="{mask3d}">
         <Control ID="Sequence">
           <Action
             ID="GetPointCloudFromMask3D"
@@ -81,11 +80,7 @@
         graspable_objects="{graspable_objects}"
       />
       <Decorator ID="ForceSuccess">
-        <Decorator
-          ID="ForEachGraspableObject"
-          vector_in="{graspable_objects}"
-          out="{button}"
-        >
+        <Decorator ID="ForEach" vector_in="{graspable_objects}" out="{button}">
           <Action ID="AlwaysFailure" />
         </Decorator>
       </Decorator>
@@ -105,12 +100,11 @@
         />
         <Action ID="SetupMTCCurrentState" task="{push_along_axis_task}" />
         <Action
-          ID="SetupMTCMoveToPose"
+          ID="SetupMTCPlanToPose"
           ik_frame="grasp_link"
           planning_group_name="manipulator"
           target_pose="{button_pose}"
           task="{push_along_axis_task}"
-          planner_interface="moveit_default"
         />
         <Action
           ID="SetupMTCUpdateGroupCollisionRule"
